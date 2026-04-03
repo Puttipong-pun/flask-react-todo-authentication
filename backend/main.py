@@ -1,3 +1,4 @@
+import os
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from flask_migrate import Migrate
@@ -10,10 +11,10 @@ from models import TodoItem, Comment, User, db
 app = Flask(__name__)
 CORS(app)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///todos.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('SQLALCHEMY_DATABASE_URI', 'sqlite:///todos.db')
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://todotest:helloworld@localhost/todotest'
 
-app.config['JWT_SECRET_KEY'] = 'fdsjkfjioi2rjshr2345hrsh043j5oij5545'
+app.config['JWT_SECRET_KEY'] = os.getenv('JWT_SECRET_KEY', 'fdsjkfjioi2rjshr2345hrsh043j5oij5545')
 jwt = JWTManager(app)
 
 db.init_app(app)
