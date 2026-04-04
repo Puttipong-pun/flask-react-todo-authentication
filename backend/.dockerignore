@@ -1,5 +1,7 @@
-/venv
-/instance
-__pycache__
+venv/
+__pycache__/
+*.pyc
 .env
+.git
+.github/
 practicum68-489108-e17688c54523.json
